@@ -1,6 +1,8 @@
 package frame;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ButtonUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,15 +24,15 @@ public class ToolBar extends JPanel implements ActionListener {
         record = new JButton("record");
         play = new JButton("play");
         d = getPreferredSize();
-        d.height = 120;
-        setPreferredSize(d);
+        d.height = 120;//height of the toolbar
+        setPreferredSize(d);//set the height of the toolbar
 
         setLayout(new FlowLayout(FlowLayout.CENTER)); //move all the buttons to the left
-        setBorder(BorderFactory.createTitledBorder("KeyPitch"));
+        setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "KeyPitch Midi Player", TitledBorder.RIGHT, TitledBorder.BOTTOM));
         setBackground(new Color(3, 84, 87, 120));
 
-        add(undo);
-        add(forward);
+//        add(undo);
+//        add(forward);
         add(play);
         add(record);
 
@@ -56,8 +58,13 @@ public class ToolBar extends JPanel implements ActionListener {
         forward.addActionListener(this);
         record.addActionListener(this);
         play.addActionListener(this);
-//        undo.setIcon(new ImageIcon());
     }
+
+    /**
+     * checks the icon image path
+     * @param path
+     * @return
+     */
     private ImageIcon createIcon(String path){
         URL url = getClass().getResource(path);
 
