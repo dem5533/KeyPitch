@@ -2,7 +2,7 @@ package midi;
 
 import java.awt.*;
 
-public class RoundRectangle {
+public class MidiRectangleBase implements RoundedRectangle{
 
     private int x;
     private int  y;
@@ -12,24 +12,12 @@ public class RoundRectangle {
     private int  arcHeight;
     private Color color;
 
-    public RoundRectangle() {
+    /**
+     * constructor to set the size and the color of the rectangle
+     */
+    public MidiRectangleBase() {
         setRoundRect();
         setColor();
-        //       color = new Color(30, 31, 31,120);
-
-    }
-
-    public Color setColor(){
-        color = new Color(42, 39, 39, 174);
-        return color;
-    }
-    public Color getColor(){return color;}
-    public int getArcWidth() {
-        return arcWidth;
-    }
-
-    public int getArcHeight() {
-        return arcHeight;
     }
 
     public void setRoundRect() {
@@ -41,11 +29,12 @@ public class RoundRectangle {
         arcHeight = 10;
     }
 
-
+    @Override
     public int getX() {
         return x;
     }
 
+    @Override
     public int getY() {
         return y;
     }
@@ -57,5 +46,19 @@ public class RoundRectangle {
     public int getHeight() {
         return height;
     }
+
+    public int getArcWidth() {
+        return arcWidth;
+    }
+
+    public int getArcHeight() {
+        return arcHeight;
+    }
+
+    public Color setColor(){
+        color = new Color(42, 39, 39, 174);
+        return color;
+    }
+    public Color getColor(){return color;}
 
 }

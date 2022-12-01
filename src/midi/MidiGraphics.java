@@ -8,7 +8,7 @@ import java.awt.geom.RoundRectangle2D;
 public class MidiGraphics extends JComponent implements MouseListener {
     private int y = 130;
     Graphics g;
-    private RoundRectangle rr = new RoundRectangle();
+    private MidiRectangleBase mrb = new MidiRectangleBase();
     private WhiteKey wk_1 = new WhiteKey(100, y);;
     private WhiteKey wk_2 = new WhiteKey(120, y);
     private WhiteKey wk_3 = new WhiteKey(140, y);
@@ -67,10 +67,10 @@ public class MidiGraphics extends JComponent implements MouseListener {
         g2.setColor(new Color(142, 194, 194));
         g2.fillRect(0,0,getWidth(),getHeight());
 
-        g2.setColor(rr.getColor());
-        g2.fillRoundRect(rr.getX(), rr.getY(), rr.getWidth(), rr.getHeight(), rr.getArcWidth(),rr.getArcHeight());
+        g2.setColor(mrb.getColor());
+        g2.fillRoundRect(mrb.getX(), mrb.getY(), mrb.getWidth(), mrb.getHeight(), mrb.getArcWidth(),mrb.getArcHeight());
         g2.setColor(Color.black);
-        g2.drawRoundRect(rr.getX(), rr.getY(), rr.getWidth(), rr.getHeight(), rr.getArcWidth(),rr.getArcHeight());
+        g2.drawRoundRect(mrb.getX(), mrb.getY(), mrb.getWidth(), mrb.getHeight(), mrb.getArcWidth(),mrb.getArcHeight());
         //draw first key
 
         paintWhiteKeys(g2);
