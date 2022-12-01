@@ -18,5 +18,6 @@ public interface RoundedRectangle {
      int getArcHeight();
      Color getColor();
 
+     Color setColor();
 
 }
