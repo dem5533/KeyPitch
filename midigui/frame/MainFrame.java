@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.net.URL;
+
 import midi.*;
 import frame.*;
 
@@ -19,12 +21,17 @@ public class MainFrame  extends JFrame {
     private MidiPanel midiPanel;
     private JFileChooser fileChooser;
 
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+    private int height;
+    private int width;
+
     /**
      * MainFrame constructor
      * initializes a layout, a toolbar, a textPanel
      */
     public MainFrame(){
-        super("MIDI");
+        super("MIDI PLAYER");
 
         setLayout(new BorderLayout());//set layout design BorderLayout
         panel_1 = new NewPanel();
@@ -47,8 +54,6 @@ public class MainFrame  extends JFrame {
             }
         });
 
- //       panel_1.setBackground(new Color(1,1,1));
-
         add(panel_1, BorderLayout.WEST);
         add(panel_2, BorderLayout.EAST);
         add(panel_3, BorderLayout.SOUTH);
@@ -56,14 +61,25 @@ public class MainFrame  extends JFrame {
         add(midiPanel, BorderLayout.CENTER);
 
         setJMenuBar(createMenuBar());
+        setIconImage(createIcon("/images/icons8-piano-pastel-glyph-96.png").getImage());
 
 
-        setSize(new Dimension(850, 600));//sets the size of the application frame
-        setMinimumSize(new Dimension(850,600));
+        height = screenSize.height * 2 / 3;
+        width = screenSize.width * 2 / 3;
+
+// set the frame height and width
+        setPreferredSize(new Dimension(width, height));
+
+        //setSize(new Dimension(810, 600));//sets the size of the application frame
+        setMinimumSize(new Dimension(900,600));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application
         setVisible(true); //set visibility
     }
 
+    /**
+     * creates the menubar to contain file management
+     * @return menubar
+     */
     private JMenuBar createMenuBar(){
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
@@ -132,6 +148,21 @@ public class MainFrame  extends JFrame {
         });
 
         return menuBar;
+    }
+
+    /**
+     * checks is the icon image is in the correct path
+     * @param path
+     * @return
+     */
+    private ImageIcon createIcon(String path){
+        URL url = getClass().getResource(path);
+
+        if(url == null){
+            System.err.println("Unable to load the image: " + path);
+        }
+        ImageIcon icon = new ImageIcon(url);
+        return icon;
     }
 
 }
