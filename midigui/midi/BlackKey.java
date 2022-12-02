@@ -1,60 +1,87 @@
 package midi;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class BlackKey {
-        private int x;
-        private int y;
-        private int  height;
-        private int  width;
-        private int  arcWidth;
-        private int  arcHeight;
-        private Color color;
+public class BlackKey implements RoundedRectangle {
+    private final int X;
+    private final int Y;
+    private int height;
+    private int width;
+    private int arcWidth;
+    private int arcHeight;
+    private Color color;
+
+    private MouseEvent e;
+
+    /**
+     * constructor to set the size, color and location of the rectangle
+     *
+     * @param x location on the panel
+     * @param y location on the panel
+     */
+    public BlackKey(int x, int y) {
+        this.X = x;
+        this.Y = y;
+        setRoundRect();
+        setColor(color);
+    }
+
+    @Override
+    public void setRoundRect() {
+        height = 90;
+        width = 13;
+        arcWidth = 5;
+        arcHeight = 5;
+    }
+
+    @Override
+    public int getX() {
+        return X;
+    }
+
+    @Override
+    public int getY() {
+        return Y;
+    }
+
+    @Override
+    public int getArcWidth() {
+        return arcWidth;
+    }
+
+    @Override
+    public int getArcHeight() {
+        return arcHeight;
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
 
 
-        public BlackKey(int x, int y) {
-            this.x = x;
-            this.y = y;
-            setRoundRect();
-            color = new Color(10, 15, 35, 255);
-        }
+    public Color setColor(Color color) {
+        this.color = new Color(10, 15, 35, 255);
+        return color;
+    }
 
-        public int getX() {
-            return x;
-        }
+    public Color getColor() {
+        return color;
+    }
 
-        public int getY() {
-            return y;
-        }
+    @Override
+    public Color setColor() {
+        return null;
+    }
 
-        private void setRoundRect() {
-            height = 90;
-            width = 13;
-            arcWidth = 5;
-            arcHeight = 5;
-        }
-        public Color setColor(Color color){
-            return color;
-        }
-        public Color getColor(){return color;}
-        public int getArcWidth() {
-            return arcWidth;
-        }
-
-        public int getArcHeight() {
-            return arcHeight;
-        }
-
-        public int getWidth() {
-            return width;
-        }
-
-        public int getHeight() {
-            return height;
-        }
-
-        public void changeColor(){
-            this.setColor(new Color(182,98,232,73));
-        }
-
+    public void changeColor() {
+        color = new Color(65, 4, 4, 252);
+    }
 }
