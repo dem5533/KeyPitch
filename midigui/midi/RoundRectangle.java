@@ -2,60 +2,22 @@ package midi;
 
 import java.awt.*;
 
-public class RoundRectangle {
+public interface RoundedRectangle {
+     void setRoundRect();
 
-    private int x;
-    private int  y;
-    private int  height;
-    private int  width;
-    private int  arcWidth;
-    private int  arcHeight;
-    private Color color;
+     int getX();
 
-    public RoundRectangle() {
-        setRoundRect();
-        setColor();
-        //       color = new Color(30, 31, 31,120);
+     int getY();
 
-    }
+     int getWidth();
 
-    public Color setColor(){
-        color = new Color(42, 39, 39, 174);
-        return color;
-    }
-    public Color getColor(){return color;}
-    public int getArcWidth() {
-        return arcWidth;
-    }
+     int getHeight();
 
-    public int getArcHeight() {
-        return arcHeight;
-    }
+     int getArcWidth();
 
-    public void setRoundRect() {
-        x = 90;
-        y = 80;
-        height = 200;
-        width = 580;
-        arcWidth = 10;
-        arcHeight = 10;
-    }
+     int getArcHeight();
+     Color getColor();
 
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
+     Color setColor();
 
 }
