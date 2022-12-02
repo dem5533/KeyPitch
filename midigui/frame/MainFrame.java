@@ -58,15 +58,15 @@ public class MainFrame  extends JFrame {
         add(panel_2, BorderLayout.EAST);
         add(panel_3, BorderLayout.SOUTH);
         add(toolBar, BorderLayout.NORTH); //add a toolbar at the top of the screen
-        add(midiPanel, BorderLayout.CENTER);
+        add(midiPanel, BorderLayout.CENTER); //midi graphics panel
 
         setJMenuBar(createMenuBar());
         setIconImage(createIcon("/images/icons8-piano-pastel-glyph-96.png").getImage());
 
+        getContentPane().addMouseListener(new KeyClickListener(new MidiPanel()));
 
         height = screenSize.height * 2 / 3;
         width = screenSize.width * 2 / 3;
-
 // set the frame height and width
         setPreferredSize(new Dimension(width, height));
 
