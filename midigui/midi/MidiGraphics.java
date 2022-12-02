@@ -3,12 +3,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.RoundRectangle2D;
 
 public class MidiGraphics extends JComponent implements MouseListener {
-    private int y = 130;
+    private final int y = 130;
     Graphics g;
-    private RoundRectangle rr = new RoundRectangle();
+    private MidiRectangleBase mrb = new MidiRectangleBase();
     private WhiteKey wk_1 = new WhiteKey(100, y);;
     private WhiteKey wk_2 = new WhiteKey(120, y);
     private WhiteKey wk_3 = new WhiteKey(140, y);
@@ -37,7 +36,6 @@ public class MidiGraphics extends JComponent implements MouseListener {
     private WhiteKey wk_26 = new WhiteKey(600, y);
     private WhiteKey wk_27 = new WhiteKey(620, y);
     private WhiteKey wk_28 = new WhiteKey(640, y);
-    //private WhiteKey wk_29 = new WhiteKey(660, y);
 
     private BlackKey bk_1 = new BlackKey(115, y);
     private BlackKey bk_2 = new BlackKey(135, y);
@@ -67,10 +65,10 @@ public class MidiGraphics extends JComponent implements MouseListener {
         g2.setColor(new Color(142, 194, 194));
         g2.fillRect(0,0,getWidth(),getHeight());
 
-        g2.setColor(rr.getColor());
-        g2.fillRoundRect(rr.getX(), rr.getY(), rr.getWidth(), rr.getHeight(), rr.getArcWidth(),rr.getArcHeight());
+        g2.setColor(mrb.getColor());
+        g2.fillRoundRect(mrb.getX(), mrb.getY(), mrb.getWidth(), mrb.getHeight(), mrb.getArcWidth(),mrb.getArcHeight());
         g2.setColor(Color.black);
-        g2.drawRoundRect(rr.getX(), rr.getY(), rr.getWidth(), rr.getHeight(), rr.getArcWidth(),rr.getArcHeight());
+        g2.drawRoundRect(mrb.getX(), mrb.getY(), mrb.getWidth(), mrb.getHeight(), mrb.getArcWidth(),mrb.getArcHeight());
         //draw first key
 
         paintWhiteKeys(g2);
@@ -254,12 +252,12 @@ public class MidiGraphics extends JComponent implements MouseListener {
         g.fillRoundRect(wk_23.getX(),wk_23.getY(), wk_23.getWidth(), wk_23.getHeight(), wk_23.getArcWidth(), wk_23.getArcHeight());
         g.setColor(Color.BLACK);
         g.drawRoundRect(wk_23.getX(),wk_23.getY(), wk_23.getWidth(), wk_23.getHeight(), wk_23.getArcWidth(), wk_23.getArcHeight());
-        //draw fourth key
+        //draw twenty-fourth key
         g.setColor(wk_24.getColor());
         g.fillRoundRect(wk_24.getX(),wk_24.getY(), wk_24.getWidth(), wk_24.getHeight(), wk_24.getArcWidth(), wk_24.getArcHeight());
         g.setColor(Color.BLACK);
         g.drawRoundRect(wk_24.getX(),wk_24.getY(), wk_24.getWidth(), wk_24.getHeight(), wk_24.getArcWidth(), wk_24.getArcHeight());
-        //draw fifth key
+        //draw twenty-fifth key
         g.setColor(wk_25.getColor());
         g.fillRoundRect(wk_25.getX(),wk_25.getY(), wk_25.getWidth(), wk_25.getHeight(), wk_25.getArcWidth(), wk_25.getArcHeight());
         g.setColor(Color.BLACK);
@@ -269,21 +267,16 @@ public class MidiGraphics extends JComponent implements MouseListener {
         g.fillRoundRect(wk_26.getX(),wk_26.getY(), wk_26.getWidth(), wk_26.getHeight(), wk_26.getArcWidth(), wk_26.getArcHeight());
         g.setColor(Color.BLACK);
         g.drawRoundRect(wk_26.getX(),wk_26.getY(), wk_26.getWidth(), wk_26.getHeight(), wk_26.getArcWidth(), wk_26.getArcHeight());
-        //draw seventh key
+        //draw twenty-seventh key
         g.setColor(wk_27.getColor());
         g.fillRoundRect(wk_27.getX(), wk_27.getY(), wk_27.getWidth(), wk_27.getHeight(), wk_27.getArcWidth(), wk_27.getArcHeight());
         g.setColor(Color.BLACK);
         g.drawRoundRect(wk_27.getX(), wk_27.getY(), wk_27.getWidth(), wk_27.getHeight(), wk_27.getArcWidth(), wk_27.getArcHeight());
-        //draw eight key
+        //draw twenty-eight key
         g.setColor(wk_28.getColor());
         g.fillRoundRect(wk_28.getX(), wk_28.getY(), wk_28.getWidth(), wk_28.getHeight(), wk_28.getArcWidth(), wk_28.getArcHeight());
         g.setColor(Color.BLACK);
         g.drawRoundRect(wk_28.getX(), wk_28.getY(), wk_28.getWidth(), wk_28.getHeight(), wk_28.getArcWidth(), wk_28.getArcHeight());
-        //draw ninth key
-//        g.setColor(wk_29.getColor());
-//        g.fillRoundRect(wk_29.getX(), wk_29.getY(), wk_29.getWidth(), wk_29.getHeight(), wk_29.getArcWidth(), wk_29.getArcHeight());
-//        g.setColor(Color.BLACK);
-//        g.drawRoundRect(wk_29.getX(), wk_29.getY(), wk_29.getWidth(), wk_29.getHeight(), wk_29.getArcWidth(), wk_29.getArcHeight());
     }
 
     @Override
