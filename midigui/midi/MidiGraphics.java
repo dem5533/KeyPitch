@@ -3,60 +3,68 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.RoundRectangle2D;
 
 public class MidiGraphics extends JComponent implements MouseListener {
-    private final int y = 130;
-    Graphics g;
-    private MidiRectangleBase mrb = new MidiRectangleBase();
-    private WhiteKey wk_1 = new WhiteKey(100, y);;
-    private WhiteKey wk_2 = new WhiteKey(120, y);
-    private WhiteKey wk_3 = new WhiteKey(140, y);
-    private WhiteKey wk_4 = new WhiteKey(160, y);
-    private WhiteKey wk_5 = new WhiteKey(180, y);
-    private WhiteKey wk_6 = new WhiteKey(200, y);
-    private WhiteKey wk_7 = new WhiteKey(220, y);
-    private WhiteKey wk_8 = new WhiteKey(240, y);
-    private WhiteKey wk_9 = new WhiteKey(260, y);
-    private WhiteKey wk_10 = new WhiteKey(280,y);
-    private WhiteKey wk_11 = new WhiteKey(300, y);
-    private WhiteKey wk_12 = new WhiteKey(320, y);
-    private WhiteKey wk_13 = new WhiteKey(340, y);
-    private WhiteKey wk_14 = new WhiteKey(360, y);
-    private WhiteKey wk_15 = new WhiteKey(380, y);
-    private WhiteKey wk_16 = new WhiteKey(400, y);
-    private WhiteKey wk_17 = new WhiteKey(420, y);
-    private WhiteKey wk_18 = new WhiteKey(440,y);
-    private WhiteKey wk_19 = new WhiteKey(460, y);
-    private WhiteKey wk_20 = new WhiteKey(480, y);
-    private WhiteKey wk_21 = new WhiteKey(500, y);
-    private WhiteKey wk_22 = new WhiteKey(520, y);
-    private WhiteKey wk_23 = new WhiteKey(540, y);
-    private WhiteKey wk_24 = new WhiteKey(560, y);
-    private WhiteKey wk_25 = new WhiteKey(580, y);
-    private WhiteKey wk_26 = new WhiteKey(600, y);
-    private WhiteKey wk_27 = new WhiteKey(620, y);
-    private WhiteKey wk_28 = new WhiteKey(640, y);
+    private final int Y = 140;
+    private final int WK_WIDTH = 20;
+    private final int WK_HEIGHT = 135;
+    private final int WK_ARCH = 7;
+    private final int BK_WIDTH = 12;
+    private final int BK_HEIGHT = 90;
+    private final int BK_ARCH = 5;
 
-    private BlackKey bk_1 = new BlackKey(115, y);
-    private BlackKey bk_2 = new BlackKey(135, y);
-    private BlackKey bk_3 = new BlackKey(175, y);
-    private BlackKey bk_4 = new BlackKey(195, y);
-    private BlackKey bk_5 = new BlackKey(215, y);
-    private BlackKey bk_6 = new BlackKey(255, y);
-    private BlackKey bk_7 = new BlackKey(275, y);
-    private BlackKey bk_8 = new BlackKey(315, y);
-    private BlackKey bk_9 = new BlackKey(335, y);
-    private BlackKey bk_10 = new BlackKey(355, y);
-    private BlackKey bk_11 = new BlackKey(395, y);
-    private BlackKey bk_12 = new BlackKey(415, y);
-    private BlackKey bk_13 = new BlackKey(455, y);
-    private BlackKey bk_14 = new BlackKey(475, y);
-    private BlackKey bk_15 = new BlackKey(495, y);
-    private BlackKey bk_16 = new BlackKey(535, y);
-    private BlackKey bk_17 = new BlackKey(555, y);
-    private BlackKey bk_18 = new BlackKey(595, y);
-    private BlackKey bk_19 = new BlackKey(615, y);
-    private BlackKey bk_20 = new BlackKey(635, y);
+
+    private RoundRectangle2D mrb = new RoundRectangle2D.Double(90, 80, 580, 210, 14,14);
+    private RoundRectangle2D wk1 = new RoundRectangle2D.Double(100, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk2 = new RoundRectangle2D.Double(120, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk3 = new RoundRectangle2D.Double(140, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk4 = new RoundRectangle2D.Double(160, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk5 = new RoundRectangle2D.Double(180, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk6 = new RoundRectangle2D.Double(200, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk7 = new RoundRectangle2D.Double(220, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk8 = new RoundRectangle2D.Double(240, Y,WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk9 = new RoundRectangle2D.Double(260, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk10 = new RoundRectangle2D.Double(280, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk11 = new RoundRectangle2D.Double(300, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk12 = new RoundRectangle2D.Double(320, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk13 = new RoundRectangle2D.Double(340, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk14 = new RoundRectangle2D.Double(360, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk15 = new RoundRectangle2D.Double(380, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk16 = new RoundRectangle2D.Double(400, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk17 = new RoundRectangle2D.Double(420, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk18 = new RoundRectangle2D.Double(440, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk19 = new RoundRectangle2D.Double(460, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk20 = new RoundRectangle2D.Double(480, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk21 = new RoundRectangle2D.Double(500, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk22 = new RoundRectangle2D.Double(520, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk23 = new RoundRectangle2D.Double(540, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk24 = new RoundRectangle2D.Double(560, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk25 = new RoundRectangle2D.Double(580, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk26 = new RoundRectangle2D.Double(600, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk27 = new RoundRectangle2D.Double(620, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+    private RoundRectangle2D wk28 = new RoundRectangle2D.Double(640, Y, WK_WIDTH, WK_HEIGHT, WK_ARCH,WK_ARCH);
+
+    private RoundRectangle2D bk1 = new RoundRectangle2D.Double(115, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk2 = new RoundRectangle2D.Double(135, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk3 = new RoundRectangle2D.Double(175, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk4 = new RoundRectangle2D.Double(195, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk5 = new RoundRectangle2D.Double(215, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk6 = new RoundRectangle2D.Double(255, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk7 = new RoundRectangle2D.Double(275, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk8 = new RoundRectangle2D.Double(315, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk9 = new RoundRectangle2D.Double(335, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk10 = new RoundRectangle2D.Double(355, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk11 = new RoundRectangle2D.Double(395, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk12 = new RoundRectangle2D.Double(415, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk13 = new RoundRectangle2D.Double(455, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk14 = new RoundRectangle2D.Double(475, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk15 = new RoundRectangle2D.Double(495, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk16 = new RoundRectangle2D.Double(535, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk17 = new RoundRectangle2D.Double(555, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk18 = new RoundRectangle2D.Double(595, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk19 = new RoundRectangle2D.Double(615, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+    private RoundRectangle2D bk20 = new RoundRectangle2D.Double(635, Y, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
 
     @Override
     public void paintComponent(Graphics g){
@@ -65,218 +73,172 @@ public class MidiGraphics extends JComponent implements MouseListener {
         g2.setColor(new Color(142, 194, 194));
         g2.fillRect(0,0,getWidth(),getHeight());
 
-        g2.setColor(mrb.getColor());
-        g2.fillRoundRect(mrb.getX(), mrb.getY(), mrb.getWidth(), mrb.getHeight(), mrb.getArcWidth(),mrb.getArcHeight());
+        g2.setColor(new Color(42, 39, 39, 174));
+        g2.fill(mrb);
         g2.setColor(Color.black);
-        g2.drawRoundRect(mrb.getX(), mrb.getY(), mrb.getWidth(), mrb.getHeight(), mrb.getArcWidth(),mrb.getArcHeight());
-        //draw first key
+        g2.draw(mrb);
 
         paintWhiteKeys(g2);
         paintBlackKeys(g2);
     }
 
-    private void paintBlackKeys(Graphics g){
-        g.setColor(bk_1.getColor());
-        g.fillRoundRect(bk_1.getX(), bk_1.getY(), bk_1.getWidth(), bk_1.getHeight(), bk_1.getArcWidth(), bk_1.getArcHeight());
-
-        g.setColor(bk_2.getColor());
-        g.fillRoundRect(bk_2.getX(), bk_2.getY(), bk_2.getWidth(), bk_2.getHeight(), bk_2.getArcWidth(), bk_2.getArcHeight());
-
-        g.setColor(bk_3.getColor());
-        g.fillRoundRect(bk_3.getX(), bk_3.getY(), bk_3.getWidth(), bk_3.getHeight(), bk_3.getArcWidth(), bk_3.getArcHeight());
-
-        g.setColor(bk_4.getColor());
-        g.fillRoundRect(bk_4.getX(), bk_4.getY(), bk_4.getWidth(), bk_4.getHeight(), bk_4.getArcWidth(), bk_4.getArcHeight());
-
-        g.setColor(bk_5.getColor());
-        g.fillRoundRect(bk_5.getX(), bk_5.getY(), bk_5.getWidth(), bk_5.getHeight(), bk_5.getArcWidth(), bk_5.getArcHeight());
-
-        g.setColor(bk_6.getColor());
-        g.fillRoundRect(bk_6.getX(), bk_6.getY(), bk_6.getWidth(), bk_6.getHeight(), bk_6.getArcWidth(), bk_6.getArcHeight());
-
-        g.setColor(bk_7.getColor());
-        g.fillRoundRect(bk_7.getX(), bk_7.getY(), bk_7.getWidth(), bk_7.getHeight(), bk_7.getArcWidth(), bk_7.getArcHeight());
-
-        g.setColor(bk_8.getColor());
-        g.fillRoundRect(bk_8.getX(), bk_8.getY(), bk_8.getWidth(), bk_8.getHeight(), bk_8.getArcWidth(), bk_8.getArcHeight());
-
-        g.setColor(bk_9.getColor());
-        g.fillRoundRect(bk_9.getX(), bk_9.getY(), bk_9.getWidth(), bk_9.getHeight(), bk_9.getArcWidth(), bk_9.getArcHeight());
-
-        g.setColor(bk_10.getColor());
-        g.fillRoundRect(bk_10.getX(), bk_10.getY(), bk_10.getWidth(), bk_10.getHeight(), bk_10.getArcWidth(), bk_10.getArcHeight());
-
-        g.setColor(bk_11.getColor());
-        g.fillRoundRect(bk_11.getX(), bk_11.getY(), bk_11.getWidth(), bk_11.getHeight(), bk_11.getArcWidth(), bk_11.getArcHeight());
-
-        g.setColor(bk_12.getColor());
-        g.fillRoundRect(bk_12.getX(), bk_12.getY(), bk_12.getWidth(), bk_12.getHeight(), bk_12.getArcWidth(), bk_12.getArcHeight());
-
-        g.setColor(bk_13.getColor());
-        g.fillRoundRect(bk_13.getX(), bk_13.getY(), bk_13.getWidth(), bk_13.getHeight(), bk_13.getArcWidth(), bk_13.getArcHeight());
-
-        g.setColor(bk_14.getColor());
-        g.fillRoundRect(bk_14.getX(), bk_14.getY(), bk_14.getWidth(), bk_14.getHeight(), bk_14.getArcWidth(), bk_14.getArcHeight());
-
-        g.setColor(bk_15.getColor());
-        g.fillRoundRect(bk_15.getX(), bk_15.getY(), bk_15.getWidth(), bk_15.getHeight(), bk_5.getArcWidth(), bk_5.getArcHeight());
-
-        g.setColor(bk_16.getColor());
-        g.fillRoundRect(bk_16.getX(), bk_16.getY(), bk_16.getWidth(), bk_16.getHeight(), bk_16.getArcWidth(), bk_16.getArcHeight());
-
-        g.setColor(bk_17.getColor());
-        g.fillRoundRect(bk_17.getX(), bk_17.getY(), bk_17.getWidth(), bk_17.getHeight(), bk_17.getArcWidth(), bk_17.getArcHeight());
-
-        g.setColor(bk_18.getColor());
-        g.fillRoundRect(bk_18.getX(), bk_18.getY(), bk_18.getWidth(), bk_18.getHeight(), bk_18.getArcWidth(), bk_18.getArcHeight());
-
-        g.setColor(bk_19.getColor());
-        g.fillRoundRect(bk_19.getX(), bk_19.getY(), bk_19.getWidth(), bk_19.getHeight(), bk_19.getArcWidth(), bk_19.getArcHeight());
-
-        g.setColor(bk_20.getColor());
-        g.fillRoundRect(bk_20.getX(), bk_20.getY(), bk_20.getWidth(), bk_20.getHeight(), bk_20.getArcWidth(), bk_20.getArcHeight());
+    private void paintBlackKeys(Graphics2D g2){
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk1);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk2);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk3);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk4);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk5);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk6);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk7);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk8);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk9);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk10);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk11);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk12);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk13);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk14);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk15);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk16);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk17);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk18);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk19);
+        g2.setColor(new Color(5, 9, 26, 255));
+        g2.fill(bk20);
     }
 
-    private void paintWhiteKeys(Graphics g){
-        g.setColor(wk_1.getColor());
-        g.fillRoundRect(wk_1.getX(),wk_1.getY(), wk_1.getWidth(), wk_1.getHeight(), wk_1.getArcWidth(), wk_1.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_1.getX(),wk_1.getY(), wk_1.getWidth(), wk_1.getHeight(), wk_1.getArcWidth(), wk_1.getArcHeight());
-        //draw second key
-        g.setColor(wk_2.getColor());
-        g.fillRoundRect(wk_2.getX(),wk_2.getY(), wk_2.getWidth(), wk_2.getHeight(), wk_2.getArcWidth(), wk_2.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_2.getX(),wk_2.getY(), wk_2.getWidth(), wk_2.getHeight(), wk_2.getArcWidth(), wk_2.getArcHeight());
-        //draw third key
-        g.setColor(wk_3.getColor());
-        g.fillRoundRect(wk_3.getX(),wk_3.getY(), wk_3.getWidth(), wk_3.getHeight(), wk_3.getArcWidth(), wk_3.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_3.getX(),wk_3.getY(), wk_3.getWidth(), wk_3.getHeight(), wk_3.getArcWidth(), wk_3.getArcHeight());
-        //draw fourth key
-        g.setColor(wk_1.getColor());
-        g.fillRoundRect(wk_4.getX(),wk_4.getY(), wk_4.getWidth(), wk_4.getHeight(), wk_4.getArcWidth(), wk_4.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_4.getX(),wk_4.getY(), wk_4.getWidth(), wk_4.getHeight(), wk_4.getArcWidth(), wk_4.getArcHeight());
-        //draw fifth key
-        g.setColor(wk_2.getColor());
-        g.fillRoundRect(wk_5.getX(),wk_5.getY(), wk_5.getWidth(), wk_5.getHeight(), wk_5.getArcWidth(), wk_5.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_5.getX(),wk_5.getY(), wk_5.getWidth(), wk_5.getHeight(), wk_5.getArcWidth(), wk_5.getArcHeight());
-        //draw sixth key
-        g.setColor(wk_6.getColor());
-        g.fillRoundRect(wk_6.getX(),wk_6.getY(), wk_6.getWidth(), wk_6.getHeight(), wk_6.getArcWidth(), wk_6.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_6.getX(),wk_6.getY(), wk_6.getWidth(), wk_6.getHeight(), wk_6.getArcWidth(), wk_6.getArcHeight());
-        //draw seventh key
-        g.setColor(wk_7.getColor());
-        g.fillRoundRect(wk_7.getX(), wk_7.getY(), wk_7.getWidth(), wk_7.getHeight(), wk_7.getArcWidth(), wk_7.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_7.getX(), wk_7.getY(), wk_7.getWidth(), wk_7.getHeight(), wk_7.getArcWidth(), wk_7.getArcHeight());
-        //draw eight key
-        g.setColor(wk_8.getColor());
-        g.fillRoundRect(wk_8.getX(), wk_8.getY(), wk_8.getWidth(), wk_8.getHeight(), wk_8.getArcWidth(), wk_8.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_8.getX(), wk_8.getY(), wk_8.getWidth(), wk_8.getHeight(), wk_8.getArcWidth(), wk_8.getArcHeight());
-        //draw ninth key
-        g.setColor(wk_9.getColor());
-        g.fillRoundRect(wk_9.getX(), wk_9.getY(), wk_9.getWidth(), wk_9.getHeight(), wk_9.getArcWidth(), wk_9.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_9.getX(), wk_9.getY(), wk_9.getWidth(), wk_9.getHeight(), wk_9.getArcWidth(), wk_9.getArcHeight());
-        //draw tenth key
-        g.setColor(wk_10.getColor());
-        g.fillRoundRect(wk_10.getX(),wk_10.getY(), wk_10.getWidth(), wk_10.getHeight(), wk_10.getArcWidth(), wk_10.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_10.getX(),wk_10.getY(), wk_10.getWidth(), wk_10.getHeight(), wk_10.getArcWidth(), wk_10.getArcHeight());
-        //draw eleventh key
-        g.setColor(wk_11.getColor());
-        g.fillRoundRect(wk_11.getX(),wk_11.getY(), wk_11.getWidth(), wk_11.getHeight(), wk_11.getArcWidth(), wk_11.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_11.getX(),wk_11.getY(), wk_11.getWidth(), wk_11.getHeight(), wk_11.getArcWidth(), wk_11.getArcHeight());
-        //draw twelfth key
-        g.setColor(wk_12.getColor());
-        g.fillRoundRect(wk_12.getX(),wk_12.getY(), wk_12.getWidth(), wk_12.getHeight(), wk_12.getArcWidth(), wk_12.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_12.getX(),wk_12.getY(), wk_12.getWidth(), wk_12.getHeight(), wk_12.getArcWidth(), wk_12.getArcHeight());
-        //draw thirteenth key
-        g.setColor(wk_13.getColor());
-        g.fillRoundRect(wk_13.getX(),wk_13.getY(), wk_13.getWidth(), wk_13.getHeight(), wk_13.getArcWidth(), wk_13.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_13.getX(),wk_13.getY(), wk_13.getWidth(), wk_13.getHeight(), wk_13.getArcWidth(), wk_13.getArcHeight());
-        //draw fourteenth key
-        g.setColor(wk_14.getColor());
-        g.fillRoundRect(wk_14.getX(),wk_14.getY(), wk_14.getWidth(), wk_14.getHeight(), wk_14.getArcWidth(), wk_14.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_14.getX(),wk_14.getY(), wk_14.getWidth(), wk_14.getHeight(), wk_14.getArcWidth(), wk_14.getArcHeight());
-        //draw fifteenth key
-        g.setColor(wk_15.getColor());
-        g.fillRoundRect(wk_15.getX(),wk_15.getY(), wk_15.getWidth(), wk_15.getHeight(), wk_15.getArcWidth(), wk_15.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_15.getX(),wk_15.getY(), wk_15.getWidth(), wk_15.getHeight(), wk_15.getArcWidth(), wk_15.getArcHeight());
-        //draw sixth key
-        g.setColor(wk_16.getColor());
-        g.fillRoundRect(wk_16.getX(),wk_16.getY(), wk_16.getWidth(), wk_16.getHeight(), wk_16.getArcWidth(), wk_16.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_16.getX(),wk_16.getY(), wk_16.getWidth(), wk_16.getHeight(), wk_16.getArcWidth(), wk_16.getArcHeight());
-        //draw seventeenth key
-        g.setColor(wk_17.getColor());
-        g.fillRoundRect(wk_17.getX(), wk_17.getY(), wk_17.getWidth(), wk_17.getHeight(), wk_17.getArcWidth(), wk_17.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_17.getX(), wk_17.getY(), wk_17.getWidth(), wk_17.getHeight(), wk_17.getArcWidth(), wk_17.getArcHeight());
-        //draw eighteenth key
-        g.setColor(wk_18.getColor());
-        g.fillRoundRect(wk_18.getX(), wk_18.getY(), wk_18.getWidth(), wk_18.getHeight(), wk_18.getArcWidth(), wk_18.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_18.getX(), wk_18.getY(), wk_18.getWidth(), wk_18.getHeight(), wk_18.getArcWidth(), wk_18.getArcHeight());
-        //draw ninth key
-        g.setColor(wk_19.getColor());
-        g.fillRoundRect(wk_19.getX(), wk_19.getY(), wk_19.getWidth(), wk_19.getHeight(), wk_19.getArcWidth(), wk_19.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_19.getX(), wk_19.getY(), wk_19.getWidth(), wk_19.getHeight(), wk_19.getArcWidth(), wk_19.getArcHeight());
-        //draw twentieth key
-        g.setColor(wk_20.getColor());
-        g.fillRoundRect(wk_20.getX(),wk_20.getY(), wk_20.getWidth(), wk_20.getHeight(), wk_20.getArcWidth(), wk_20.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_20.getX(),wk_20.getY(), wk_20.getWidth(), wk_20.getHeight(), wk_20.getArcWidth(), wk_20.getArcHeight());
-        //draw twenty-first key
-        g.setColor(wk_1.getColor());
-        g.fillRoundRect(wk_21.getX(),wk_21.getY(), wk_21.getWidth(), wk_21.getHeight(), wk_21.getArcWidth(), wk_21.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_21.getX(),wk_21.getY(), wk_21.getWidth(), wk_21.getHeight(), wk_21.getArcWidth(), wk_21.getArcHeight());
-        //draw twenty-second key
-        g.setColor(wk_22.getColor());
-        g.fillRoundRect(wk_22.getX(),wk_22.getY(), wk_22.getWidth(), wk_22.getHeight(), wk_22.getArcWidth(), wk_22.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_22.getX(),wk_22.getY(), wk_22.getWidth(), wk_22.getHeight(), wk_22.getArcWidth(), wk_22.getArcHeight());
-        //draw twenty-third key
-        g.setColor(wk_3.getColor());
-        g.fillRoundRect(wk_23.getX(),wk_23.getY(), wk_23.getWidth(), wk_23.getHeight(), wk_23.getArcWidth(), wk_23.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_23.getX(),wk_23.getY(), wk_23.getWidth(), wk_23.getHeight(), wk_23.getArcWidth(), wk_23.getArcHeight());
-        //draw twenty-fourth key
-        g.setColor(wk_24.getColor());
-        g.fillRoundRect(wk_24.getX(),wk_24.getY(), wk_24.getWidth(), wk_24.getHeight(), wk_24.getArcWidth(), wk_24.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_24.getX(),wk_24.getY(), wk_24.getWidth(), wk_24.getHeight(), wk_24.getArcWidth(), wk_24.getArcHeight());
-        //draw twenty-fifth key
-        g.setColor(wk_25.getColor());
-        g.fillRoundRect(wk_25.getX(),wk_25.getY(), wk_25.getWidth(), wk_25.getHeight(), wk_25.getArcWidth(), wk_25.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_25.getX(),wk_25.getY(), wk_25.getWidth(), wk_25.getHeight(), wk_25.getArcWidth(), wk_25.getArcHeight());
-        //draw sixth key
-        g.setColor(wk_26.getColor());
-        g.fillRoundRect(wk_26.getX(),wk_26.getY(), wk_26.getWidth(), wk_26.getHeight(), wk_26.getArcWidth(), wk_26.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_26.getX(),wk_26.getY(), wk_26.getWidth(), wk_26.getHeight(), wk_26.getArcWidth(), wk_26.getArcHeight());
-        //draw twenty-seventh key
-        g.setColor(wk_27.getColor());
-        g.fillRoundRect(wk_27.getX(), wk_27.getY(), wk_27.getWidth(), wk_27.getHeight(), wk_27.getArcWidth(), wk_27.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_27.getX(), wk_27.getY(), wk_27.getWidth(), wk_27.getHeight(), wk_27.getArcWidth(), wk_27.getArcHeight());
-        //draw twenty-eight key
-        g.setColor(wk_28.getColor());
-        g.fillRoundRect(wk_28.getX(), wk_28.getY(), wk_28.getWidth(), wk_28.getHeight(), wk_28.getArcWidth(), wk_28.getArcHeight());
-        g.setColor(Color.BLACK);
-        g.drawRoundRect(wk_28.getX(), wk_28.getY(), wk_28.getWidth(), wk_28.getHeight(), wk_28.getArcWidth(), wk_28.getArcHeight());
+    private void paintWhiteKeys(Graphics2D g2){
+        g2.setColor(Color.WHITE);
+        g2.fill(wk1);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk1);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk2);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk2);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk3);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk3);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk4);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk4);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk5);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk5);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk6);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk6);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk7);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk7);
+
+        g2.setColor(Color.WHITE);
+        g2.fill(wk8);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk8);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk9);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk9);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk10);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk10);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk11);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk11);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk12);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk12);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk13);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk13);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk14);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk14);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk15);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk15);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk16);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk16);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk17);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk17);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk18);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk18);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk19);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk19);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk20);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk20);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk21);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk21);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk22);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk22);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk23);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk23);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk24);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk24);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk25);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk25);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk26);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk26);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk27);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk27);
+        g2.setColor(Color.WHITE);
+        g2.fill(wk28);
+        g2.setColor(Color.BLACK);
+        g2.draw(wk28);
     }
 
     @Override
