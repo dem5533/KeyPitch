@@ -1,8 +1,6 @@
 package midi;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class BlackKey implements RoundedRectangle {
     private final int X;
@@ -12,8 +10,6 @@ public class BlackKey implements RoundedRectangle {
     private int arcWidth;
     private int arcHeight;
     private Color color;
-
-    private MouseEvent e;
 
     /**
      * constructor to set the size, color and location of the rectangle
