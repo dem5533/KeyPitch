@@ -1,4 +1,4 @@
-package frame;
+package midigui.frame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 
-import midi.*;
-import frame.*;
+import midigui.midi.*;
+//import frame.*;
 
 /**
  * the MainFrame class adds all the components to the frame window to customize the gui
@@ -47,7 +47,7 @@ public class MainFrame  extends JFrame {
         add a listener interface
         change the component when connecting
          */
-        toolBar.setCustomListener(new CustomListener() {
+        toolBar.setCustomListener(new frame.CustomListener() {
             @Override
             public void emmited(String text) {
                 textPanel.appendText(text);
@@ -61,7 +61,7 @@ public class MainFrame  extends JFrame {
         add(midiPanel, BorderLayout.CENTER); //midi graphics panel
 
         setJMenuBar(createMenuBar());
-        setIconImage(createIcon("/images/icons8-piano-pastel-glyph-96.png").getImage());
+        setIconImage(createIcon("..//images//icons8-piano-pastel-glyph-96.png").getImage());
 
         getContentPane().addMouseListener(new KeyClickListener(new MidiPanel()));
 
@@ -128,7 +128,8 @@ public class MainFrame  extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION)
-                    System.out.println(fileChooser.getSelectedFile());//change this code to connect to application
+                    //System.out.println(fileChooser.getSelectedFile());//change this code to connect to application
+                    profile.ProfileController.setCustomFile(fileChooser.getSelectedFile());
             }
         });
 

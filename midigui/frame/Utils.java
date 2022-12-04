@@ -1,4 +1,4 @@
-package frame;
+package midigui.frame;
 
 public class Utils {
     public static String getFileExtension(String name){

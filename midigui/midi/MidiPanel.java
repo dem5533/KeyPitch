@@ -1,4 +1,4 @@
-package midi;
+package midigui.midi;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package frame;
+package midigui.frame;
 
 import javax.swing.*;
 import java.awt.*;

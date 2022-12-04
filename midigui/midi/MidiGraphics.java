@@ -1,4 +1,4 @@
-package midi;
+package midigui.midi;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -299,7 +299,8 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
     public void mouseClicked(MouseEvent e) {
         if ((e.getButton()) == 1 && wk1.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "first key!");
+            //JOptionPane.showMessageDialog(null, "first key!");
+            profile.ProfileController.play(36);
         } else if ((e.getButton()) == 3 && wk1.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "first key Right Click! YES!");
@@ -307,14 +308,16 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk2.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 2!");
+            //JOptionPane.showMessageDialog(null, "key 2!");
+            profile.ProfileController.play(38);
         } else if ((e.getButton()) == 3 && wk2.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 2 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk3.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 3!");
+            //JOptionPane.showMessageDialog(null, "key 3!");
+            profile.ProfileController.play(40);
         } else if ((e.getButton()) == 3 && wk3.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "key 3 Right Click! YES!");
@@ -322,14 +325,16 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk4.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 4!");
+            //JOptionPane.showMessageDialog(null, "key 4!");
+            profile.ProfileController.play(41);
         } else if ((e.getButton()) == 3 && wk4.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 4 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk5.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, " key 5!");
+            //JOptionPane.showMessageDialog(null, " key 5!");
+            profile.ProfileController.play(43);
         } else if ((e.getButton()) == 3 && wk5.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 5 Right Click! YES!");
@@ -337,14 +342,16 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk6.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 6!");
+            //JOptionPane.showMessageDialog(null, "key 6!");
+            profile.ProfileController.play(45);
         } else if ((e.getButton()) == 3 && wk6.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 6 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk7.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 7!");
+            //JOptionPane.showMessageDialog(null, "key 7!");
+            profile.ProfileController.play(47);
         } else if ((e.getButton()) == 3 && wk1.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "key 7 Right Click! YES!");
@@ -352,14 +359,16 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk8.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 8!");
+            //JOptionPane.showMessageDialog(null, "key 8!");
+            profile.ProfileController.play(48);
         } else if ((e.getButton()) == 3 && wk8.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 8 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk9.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, " key 9!");
+            //JOptionPane.showMessageDialog(null, " key 9!");
+            profile.ProfileController.play(50);
         } else if ((e.getButton()) == 3 && wk9.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 9 Right Click! YES!");
@@ -367,14 +376,16 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk10.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 10!");
+            //JOptionPane.showMessageDialog(null, "key 10!");
+            profile.ProfileController.play(52);
         } else if ((e.getButton()) == 3 && wk10.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 10 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk11.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 11!");
+            //JOptionPane.showMessageDialog(null, "key 11!");
+            profile.ProfileController.play(53);
         } else if ((e.getButton()) == 3 && wk11.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "key 11 Right Click! YES!");
@@ -382,56 +393,64 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk12.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 12!");
+            //JOptionPane.showMessageDialog(null, "key 12!");
+            profile.ProfileController.play(55);
         } else if ((e.getButton()) == 3 && wk12.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 12 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk13.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, " key 13!");
+            //JOptionPane.showMessageDialog(null, " key 13!");
+            profile.ProfileController.play(57);
         } else if ((e.getButton()) == 3 && wk13.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 13 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk14.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 14!");
+            //JOptionPane.showMessageDialog(null, "key 14!");
+            profile.ProfileController.play(59);
         } else if ((e.getButton()) == 3 && wk14.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 14 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk15.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 15!");
+            //JOptionPane.showMessageDialog(null, "key 15!");
+            profile.ProfileController.play(60);
         } else if ((e.getButton()) == 3 && wk15.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "key 15 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk16.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 16!");
+            //JOptionPane.showMessageDialog(null, "key 16!");
+            profile.ProfileController.play(62);
         } else if ((e.getButton()) == 3 && wk16.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 16 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk17.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, " key 17!");
+            //JOptionPane.showMessageDialog(null, " key 17!");
+            profile.ProfileController.play(64);
         } else if ((e.getButton()) == 3 && wk17.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 17 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk18.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 18!");
+            //JOptionPane.showMessageDialog(null, "key 18!");
+            profile.ProfileController.play(65);
         } else if ((e.getButton()) == 3 && wk18.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 18 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk19.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 19!");
+            //JOptionPane.showMessageDialog(null, "key 19!");
+            profile.ProfileController.play(67);
         } else if ((e.getButton()) == 3 && wk19.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "key 19 Right Click! YES!");
@@ -439,28 +458,32 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk20.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 20!");
+            //JOptionPane.showMessageDialog(null, "key 20!");
+            profile.ProfileController.play(69);
         } else if ((e.getButton()) == 3 && wk20.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 20 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk21.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, " key 21!");
+            //JOptionPane.showMessageDialog(null, " key 21!");
+            profile.ProfileController.play(71);
         } else if ((e.getButton()) == 3 && wk21.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 21 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk22.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 22!");
+            //JOptionPane.showMessageDialog(null, "key 22!");
+            profile.ProfileController.play(72);
         } else if ((e.getButton()) == 3 && wk22.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 22 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk23.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 23!");
+            //JOptionPane.showMessageDialog(null, "key 23!");
+            profile.ProfileController.play(74);
         } else if ((e.getButton()) == 3 && wk23.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "key 23 Right Click! YES!");
@@ -468,35 +491,40 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         if ((e.getButton()) == 1 && wk24.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 24!");
+            //JOptionPane.showMessageDialog(null, "key 24!");
+            profile.ProfileController.play(76);
         } else if ((e.getButton()) == 3 && wk24.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 24 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk25.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, " key 25!");
+            //JOptionPane.showMessageDialog(null, " key 25!");
+            profile.ProfileController.play(77);
         } else if ((e.getButton()) == 3 && wk25.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 25 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk26.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 26!");
+            //JOptionPane.showMessageDialog(null, "key 26!");
+            profile.ProfileController.play(79);
         } else if ((e.getButton()) == 3 && wk26.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, "key 26 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk27.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, "key 27!");
+            //JOptionPane.showMessageDialog(null, "key 27!");
+            profile.ProfileController.play(81);
         } else if ((e.getButton()) == 3 && wk27.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 27 Right Click! YES!");
         }
         if ((e.getButton()) == 1 && wk28.contains(e.getX(), e.getY())) { //Left Click
             //test
-            JOptionPane.showMessageDialog(null, " key 28!");
+            //JOptionPane.showMessageDialog(null, " key 28!");
+            profile.ProfileController.play(83);
         } else if ((e.getButton()) == 3 && wk28.contains(e.getX(), e.getY())) { //Right  Click
             //test
             JOptionPane.showMessageDialog(null, " key 28 Right Click! YES!");
