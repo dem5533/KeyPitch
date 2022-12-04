@@ -1,3 +1,5 @@
+package profile;
+
 import be.tarsos.dsp.*;
 import be.tarsos.dsp.io.TarsosDSPAudioFloatConverter;
 import be.tarsos.dsp.io.TarsosDSPAudioFormat;
@@ -42,22 +44,21 @@ public class AudioPitcher implements AudioProcessor {
      * <p>
      *    pitchFactor works based on an exponential with base 2, i.e. 2 = first octave, 4 = second octave, ect.
      * </p>
-     * @param filePath String: location path of file.
+     * @param inputStream AudioInputStream: stream for the audio.
      * @param pitchFactor double: pitching factor, must be between .25 and 10; 1.0 is original pitch.
      * @param gainFactor double: volume factor; 1.0 is original volume.
      */
-    public AudioPitcher(String filePath, double pitchFactor, double gainFactor) {
+    public AudioPitcher(AudioInputStream inputStream, double pitchFactor, double gainFactor) {
 
         this.gainFactor = gainFactor;
         this.pitchFactor = 1 / pitchFactor;
 
         try {
-            audioFile = new File(filePath);
-            audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+            audioInputStream = inputStream;
 
-            if (audioFile != null) {
+            /*if (audioFile != null) {
                 format = AudioSystem.getAudioFileFormat(audioFile).getFormat();
-            } else
+            } else*/
                 format = new AudioFormat(44100, 16, 1, true, false);
 
             audioPlayer = new AudioPlayer(format);
@@ -118,8 +119,8 @@ public class AudioPitcher implements AudioProcessor {
 
     /**
      * Method to pitch shift audio using the raw data stored as a byte array.
-     * @param buffer byte array holding the audio data
-     * @return byte array holding the pitch shifted data
+     * @param buffer byte array holding the audio data:byte[]
+     * @return byte array holding the pitch shifted data:byte[]
      */
     public byte[] pitchShiftBytes(byte [] buffer) {
 
@@ -136,5 +137,48 @@ public class AudioPitcher implements AudioProcessor {
         this.rateTransposer.process(event);
 
         return event.getByteBuffer();
+    }
+
+    /**
+     * Method to calculate the pitch factor scalar based on midi note protocol.
+     * @param note midi note protocol ID: int
+     * @return pitch factor scalar (between .25 and 10): double
+     */
+    public static double calculatePitchFactor(int note) {
+
+        double factor = 0.0;
+        int rem = note % 12;
+        double octave = 0;
+        octave = Math.pow(2, (int)(note / 12 - 5));
+
+        if(octave >= .25 && octave <= 10) {
+            switch (rem) {
+                case 0 ->     //root
+                        factor = octave;
+                case 1 ->     //minor second
+                        factor = octave * (float) 17 / 16;
+                case 2 ->     //major second
+                        factor = octave * (float) 9 / 8;
+                case 3 ->     //minor third
+                        factor = octave * (float) 19 / 16;
+                case 4 ->     //major third
+                        factor = octave * (float) 5 / 4;
+                case 5 ->     //perfect fourth
+                        factor = octave * (float) 21 / 16;
+                case 6 ->     //diminished fifth
+                        factor = octave * (float) 23 / 16;
+                case 7 ->     //perfect fifth
+                        factor = octave * (float) 3 / 2;
+                case 8 ->     //minor sixth
+                        factor = octave * (float) 25 / 16;
+                case 9 ->     //major sixth
+                        factor = octave * (float) 27 / 16;
+                case 10 ->    //minor seventh
+                        factor = octave * (float) 29 / 16;
+                case 11 ->    //major seventh
+                        factor = octave * (float) 15 / 8;
+            }
+        }
+        return factor;
     }
 }

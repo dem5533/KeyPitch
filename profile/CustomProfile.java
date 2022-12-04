@@ -35,9 +35,14 @@ public class CustomProfile implements Profile {
     }
 
     public void play(int note) {
-        // TODO Call Danny's code here
+
         // The int note is based on MIDI standards so 60 is middle C.
         // getPath() for the URL of the file
+
+        double factor = AudioPitcher.calculatePitchFactor(note);
+
+        AudioPitcher pitchShifter = new AudioPitcher(stream, factor, 1.0);
+        pitchShifter.start();
 
         /* This works for testing
         int bytesRead;
