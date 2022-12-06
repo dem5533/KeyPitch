@@ -15,7 +15,7 @@ import java.util.Objects;
  * @author Caleb Henry
  */
 public class CustomProfile implements Profile {
-    private final byte[] buffer = new byte[1024];
+    private final byte[] buffer = new byte[4098];
     private URL path;
     private AudioInputStream stream;
 
@@ -41,8 +41,18 @@ public class CustomProfile implements Profile {
 
         double factor = AudioPitcher.calculatePitchFactor(note);
 
-        AudioPitcher pitchShifter = new AudioPitcher(stream, factor, 1.0);
+        AudioPitcher pitchShifter = new AudioPitcher(stream, path, factor, 1.0);
         pitchShifter.start();
+
+        /*try {
+            stream.read(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }                                          DSP is throwing weird array index oob exceptions
+                                                   with this implementation, needs more work
+        byte[] pitchedBuffer = pitchShifter.pitchShiftBytes(buffer);
+
+        PlaySound.writeBuffer(pitchedBuffer, 0, buffer.length);*/
 
         /* This works for testing
         int bytesRead;
