@@ -830,7 +830,7 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
     public void changeKeyColorOnMouseClicked() {
         Graphics g = getGraphics();
         Graphics2D g2 = (Graphics2D) g;
-        Color color = new Color(253, 255, 255, 231);
+        Color color = new Color(238, 56, 56, 184);
 
         if (active == true && keyCount == 1) {
             g2.setColor(Color.BLACK);
@@ -1177,6 +1177,8 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
       int a = 40;
        return new Color(r,g,b,a);
     }
+
+
 
 }
 
