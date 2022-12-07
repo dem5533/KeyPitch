@@ -63,8 +63,6 @@ public class MainFrame  extends JFrame {
         setJMenuBar(createMenuBar());
         setIconImage(createIcon("..//images//icons8-piano-pastel-glyph-96.png").getImage());
 
-        getContentPane().addMouseListener(new KeyClickListener(new MidiPanel()));
-
         height = screenSize.height * 2 / 3;
         width = screenSize.width * 2 / 3;
 // set the frame height and width
