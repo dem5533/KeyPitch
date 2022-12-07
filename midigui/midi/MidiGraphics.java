@@ -229,7 +229,7 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         for(int i = 0; i < whiteKey.length; i++){
             if (active == true && whiteKeyCount == i) {
-                g2.setColor(c);
+                g2.setColor(c.brighter());
                 g2.fill(whiteKey[i]);
             }
         }
