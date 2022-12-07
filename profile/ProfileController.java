@@ -34,4 +34,8 @@ public class ProfileController {
     public static void play(int note) {
         currentProfile.play(note);
     }
+
+    public static void stop(int note) {
+        currentProfile.stop(note);
+    }
 }

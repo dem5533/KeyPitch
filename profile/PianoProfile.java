@@ -61,4 +61,8 @@ public class PianoProfile implements Profile {
         }
         noteOff(note);
     }
+
+    public void stop(int note) {
+        noteOff(note);
+    }
 }

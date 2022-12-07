@@ -72,6 +72,10 @@ public class CustomProfile implements Profile {
          */
     }
 
+    public void stop(int note) {
+
+    }
+
     public URL getPath() {
         return path;
     }

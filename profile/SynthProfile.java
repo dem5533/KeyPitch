@@ -47,4 +47,8 @@ public class SynthProfile implements Profile {
             }
         }
     }
+
+    public void stop(int note) {
+            
+    }
 }

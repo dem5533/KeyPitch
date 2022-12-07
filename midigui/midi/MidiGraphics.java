@@ -1,4 +1,5 @@
 package midi;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,6 +20,8 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
     private final int BK_WIDTH = 12;  //black key width
     private final int BK_HEIGHT = 90;  //black key height
     private final int BK_ARCH = 5;   //black key arch width and arch height
+    private int oldKeyNumber = 0;
+    private boolean oldKeyWhite = true;
 
 //    private volatile int screenX = 0;
 //    private volatile int screenY = 0;
@@ -30,9 +33,6 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
     private RoundRectangle2D[] blackKey = new RoundRectangle2D.Double[20]; //BLACK keys array
     private BufferedImage buffer;
-    private boolean active = false;
-    private int whiteKeyCount; //white key counter
-    private int blackKeyCount; //black key counter
     private Image myImage;
 
     /**
@@ -53,10 +53,10 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
         //initialize black keys manually because of uneven gap space
         blackKey[0] = new RoundRectangle2D.Double(115, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
-        blackKey[1]  = new RoundRectangle2D.Double(135, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
-        blackKey[2]  = new RoundRectangle2D.Double(175, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
-        blackKey[3]  = new RoundRectangle2D.Double(195, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
-        blackKey[4]  = new RoundRectangle2D.Double(215, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+        blackKey[1] = new RoundRectangle2D.Double(135, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+        blackKey[2] = new RoundRectangle2D.Double(175, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+        blackKey[3] = new RoundRectangle2D.Double(195, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
+        blackKey[4] = new RoundRectangle2D.Double(215, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
         blackKey[5] = new RoundRectangle2D.Double(255, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
         blackKey[6] = new RoundRectangle2D.Double(275, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
         blackKey[7] = new RoundRectangle2D.Double(315, Y_COORDINATE, BK_WIDTH, BK_HEIGHT, BK_ARCH,BK_ARCH);
@@ -126,72 +126,62 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        active = true;
-        int bkPressed = 0;
-
-        //add code for Black keys
-        for (int i = 0; i < blackKey.length; i++) {
-            blackKeyCount = i;
-            if ((e.getButton()) == 1 && blackKey[i].contains(e.getX(), e.getY())) { //Left Click
-                //for testing only
-                JOptionPane.showMessageDialog(null, "black key " + (blackKeyCount + 1));
-                bkPressed = 1;
-                //add code here to connect black keys
-            }
-        }
-
-        if (bkPressed == 0) {
-            for(int i = 0; i < whiteKey.length; i++){
-                whiteKeyCount = i;
-                if ((e.getButton()) == 1 && whiteKey[i].contains(e.getX(), e.getY())) { //Left Click
-                    //test
-    //                JOptionPane.showMessageDialog(null, "key " + (whiteKeyCount + 1) );
-                    changeKeyColorOnMouseClicked();
-                    // add code to connect white keys
-                }
-            else if ((e.getButton()) == 3 && whiteKey[i].contains(e.getX(), e.getY())) { //Right  Click
-                changeKeyColorOnMouseClicked();
-    //                JOptionPane.showMessageDialog(null, "right click on key " + (whiteKeyCount + 1) );
-                }
-            }
-        }
-    }
-
-    /**
-     * detects the x and y coordinates of the mouse on the panel
-     * @param e the event to be processed
-     */
-    @Override
     public void mousePressed(MouseEvent e) {
-//        screenX = e.getXOnScreen();
-//        screenY = e.getYOnScreen();
-//        myX = getX();
-//        myY = getY();
+        for (int i = 0; i < blackKey.length; i++) {
+            if ((e.getButton()) == 1 && blackKey[i].contains(e.getX(), e.getY())) {
+                profile.ProfileController.play(profile.KeyConverter.getBlackKey(i));
+                changeKeyColorOnMousePressed(i, false);
+                return;
+            }
+        }
+
+        for (int i = 0; i < whiteKey.length; i++) {
+            if ((e.getButton()) == 1 && whiteKey[i].contains(e.getX(), e.getY())) {
+                changeKeyColorOnMousePressed(i, true);
+                profile.ProfileController.play(profile.KeyConverter.getWhiteKey(i));
+            }
+        }
     }
 
-    /**
-     * not needed
-     * @param e the event to be processed
-     */
     @Override
     public void mouseReleased(MouseEvent e) {
+        for (int i = 0; i < blackKey.length; i++) {
+            if ((e.getButton()) == 1 && blackKey[i].contains(e.getX(), e.getY())) {
+                changeKeyColorOnMouseReleased(i, false);
+                profile.ProfileController.stop(profile.KeyConverter.getBlackKey(i));
+                return;
+            }
+        }
 
+        for (int i = 0; i < whiteKey.length; i++) {
+            if ((e.getButton()) == 1 && whiteKey[i].contains(e.getX(), e.getY())) {
+                changeKeyColorOnMouseReleased(i, true);
+                profile.ProfileController.stop(profile.KeyConverter.getWhiteKey(i));
+            }
+        }
     }
 
-    /**
-     * not needed
-     * @param e the event to be processed
-     */
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        for (int i = 0; i < blackKey.length; i++) {
+            if (blackKey[i].contains(e.getX(), e.getY())) {
+                changeKeyColorOnMouseMoved(i, false);
+                return;
+            }
+        }
+
+        for (int i = 0; i < whiteKey.length; i++){
+            if (whiteKey[i].contains(e.getX(), e.getY())) {
+                changeKeyColorOnMouseMoved(i, true);
+            }
+        }
+    }
+
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
-    /**
-     * not needed
-     * @param e the event to be processed
-     */
     @Override
     public void mouseExited(MouseEvent e) {
 
@@ -199,82 +189,59 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
     @Override
     public void mouseDragged(MouseEvent e) {
-//        int deltaX = e.getXOnScreen() - screenX;
-//        int deltaY = e.getYOnScreen() - screenY;
-//
-//        setLocation(myX + deltaX, myY + deltaY);
+
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-        active = true; //set true when mouse action listener activated
-        //for each white key get x and y coordinates
-        for (int i = 0; i < whiteKey.length; i++){
-            whiteKeyCount = i;
-            if (whiteKey[i].contains(e.getX(), e.getY())) {
-                changeKeyColorOnMouseMoved();
-                //for testing purposes
-//                System.out.println("white key at number "+ (whiteKeyCount +1) + " "+ e.getX() + " " + e.getY());
-            }
-        }
+    public void mouseClicked(MouseEvent e) {
+
     }
 
-    /**
-     * changes white key colors when the mouse moves over that key
-     */
-    public void changeKeyColorOnMouseMoved() {
-        Color c = generateColor();
+    private void changeKeyColorOnMouseMoved(int keyNumber, boolean white) {
+        if (keyNumber == oldKeyNumber && white == oldKeyWhite) {
+            return;
+        }
+
+        changeKeyColorOnMouseReleased(oldKeyNumber, oldKeyWhite);
+        oldKeyNumber = keyNumber;
+        oldKeyWhite = white;
+
+        Color color = generateColor();
+        changeKeyColor(keyNumber, white, color);
+    }
+
+    private void changeKeyColorOnMousePressed(int keyNumber, boolean white) {
+        Color color = generateColor();
+        changeKeyColor(keyNumber, white, color);
+    }
+
+    private void changeKeyColorOnMouseReleased(int keyNumber, boolean white) {
+        Color color = white ? Color.WHITE : Color.BLACK;
+        changeKeyColor(keyNumber, white, color);
+    }
+
+    private void changeKeyColor(int keyNumber, boolean white, Color color) {
         Graphics g = getGraphics();
         Graphics2D g2 = (Graphics2D) g;
 
-        for(int i = 0; i < whiteKey.length; i++){
-            if (active == true && whiteKeyCount == i) {
-                g2.setColor(c.brighter());
-                g2.fill(whiteKey[i]);
-            }
-        }
-        //repaint white key's borders
-        for(int i = 0; i < whiteKey.length; i++){
-            if (active == true && whiteKeyCount == i) {
-                g2.setColor(Color.BLACK);
-                g2.draw(whiteKey[i]);
-            }
-        }
-    //repaint black keys
-        for(int i = 0; i < blackKey.length; i++){
+        if (white) {
+            g2.setColor(color);
+            g2.fill(whiteKey[keyNumber]);
+
+            g2.setColor(Color.BLACK);
+            g2.draw(whiteKey[keyNumber]);
+
+            // Repaint black keys
+            for (int i = 0; i < blackKey.length; i++) {
                 g2.setColor(Color.BLACK);
                 g2.fill(blackKey[i]);
-        }
-    }
-
-    public void changeKeyColorOnMouseClicked() {
-        Graphics g = getGraphics(); //create graphics
-        Graphics2D g2 = (Graphics2D) g;
-        Color color = new Color(10,150,255, 87);
-
-        //repaint black keys
-        for(int i = 0; i < blackKey.length; i++){
-            g2.setColor(Color.BLACK);
-            g2.fill(blackKey[i]);
-        }
-        //paint only the active key
-        for(int i = 0; i < whiteKey.length; i++){
-            if (active == true && whiteKeyCount == i) {
-                g2.setColor(color);
-                g2.fill(whiteKey[i]);
             }
-        }
-        //draw only the active key's borders
-        for(int i = 0; i < whiteKey.length; i++){
-            if (active == true && whiteKeyCount == i) {
-                g2.setColor(Color.BLACK);
-                g2.draw(whiteKey[i]);
-            }
-        }
-        //repaint black keys
-        for(int i = 0; i < blackKey.length; i++){
-            g2.setColor(Color.BLACK);
-            g2.fill(blackKey[i]);
+        } else {
+            g2.setColor(color);
+            g2.fill(blackKey[keyNumber]);
+
+            g2.setColor(color);
+            g2.draw(blackKey[keyNumber]);
         }
     }
 
@@ -283,11 +250,11 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
      * @return
      */
     public Color generateColor(){
-      int r = (int)(Math.random() * 256 );
-      int g = (int)(Math.random() * 256 );
-      int b = (int)(Math.random() * 256 );
-      int a = 40;
-       return new Color(r,g,b,a).brighter().brighter();
+        int r = (int)(Math.random() * 256);
+        int g = (int)(Math.random() * 256);
+        int b = (int)(Math.random() * 256);
+        int a = 100;
+        return new Color(r,g,b,a).brighter().brighter();
     }
     
     private ImageIcon createIcon(String path){
@@ -300,4 +267,3 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
         return icon;
     }
 }
-

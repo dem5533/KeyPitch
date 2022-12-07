@@ -8,4 +8,5 @@ package profile;
  */
 public interface Profile {
     void play(int note);
+    void stop(int note);
 }
