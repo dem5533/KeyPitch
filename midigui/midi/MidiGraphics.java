@@ -128,20 +128,7 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
     @Override
     public void mouseClicked(MouseEvent e) {
         active = true;
-
-        for(int i = 0; i < whiteKey.length; i++){
-            whiteKeyCount = i;
-            if ((e.getButton()) == 1 && whiteKey[i].contains(e.getX(), e.getY())) { //Left Click
-                //test
-//                JOptionPane.showMessageDialog(null, "key " + (whiteKeyCount + 1) );
-                changeKeyColorOnMouseClicked();
-                // add code to connect white keys
-            }
-         else if ((e.getButton()) == 3 && whiteKey[i].contains(e.getX(), e.getY())) { //Right  Click
-            changeKeyColorOnMouseClicked();
-//                JOptionPane.showMessageDialog(null, "right click on key " + (whiteKeyCount + 1) );
-        }
-        }
+        int bkPressed = 0;
 
         //add code for Black keys
         for (int i = 0; i < blackKey.length; i++) {
@@ -149,7 +136,24 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
             if ((e.getButton()) == 1 && blackKey[i].contains(e.getX(), e.getY())) { //Left Click
                 //for testing only
                 JOptionPane.showMessageDialog(null, "black key " + (blackKeyCount + 1));
+                bkPressed = 1;
                 //add code here to connect black keys
+            }
+        }
+
+        if (bkPressed == 0) {
+            for(int i = 0; i < whiteKey.length; i++){
+                whiteKeyCount = i;
+                if ((e.getButton()) == 1 && whiteKey[i].contains(e.getX(), e.getY())) { //Left Click
+                    //test
+    //                JOptionPane.showMessageDialog(null, "key " + (whiteKeyCount + 1) );
+                    changeKeyColorOnMouseClicked();
+                    // add code to connect white keys
+                }
+            else if ((e.getButton()) == 3 && whiteKey[i].contains(e.getX(), e.getY())) { //Right  Click
+                changeKeyColorOnMouseClicked();
+    //                JOptionPane.showMessageDialog(null, "right click on key " + (whiteKeyCount + 1) );
+                }
             }
         }
     }
@@ -279,9 +283,9 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
      * @return
      */
     public Color generateColor(){
-      int r = (int)(Math.random() * 256);
-      int g = (int)(Math.random() * 256);
-      int b = (int)(Math.random() * 256);
+      int r = (int)(Math.random() * 256 + 50);
+      int g = (int)(Math.random() * 256 + 50);
+      int b = (int)(Math.random() * 256 + 50);
       int a = 40;
        return new Color(r,g,b,a);
     }
