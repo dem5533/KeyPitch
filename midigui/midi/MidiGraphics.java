@@ -283,11 +283,11 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
      * @return
      */
     public Color generateColor(){
-      int r = (int)(Math.random() * 256 + 50);
-      int g = (int)(Math.random() * 256 + 50);
-      int b = (int)(Math.random() * 256 + 50);
+      int r = (int)(Math.random() * 256 );
+      int g = (int)(Math.random() * 256 );
+      int b = (int)(Math.random() * 256 );
       int a = 40;
-       return new Color(r,g,b,a).brighter();
+       return new Color(r,g,b,a).brighter().brighter();
     }
     
     private ImageIcon createIcon(String path){
