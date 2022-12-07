@@ -43,26 +43,11 @@ public class PianoProfile implements Profile {
         }
     }
 
-    public void noteOn(int note) {
+    public void play(int note) {
         channel.noteOn(note, 100);
     }
 
-    public void noteOff(int note) {
-        channel.noteOff(note, 0);
-    }
-
-    public void play(int note) {
-        // There's definitely a better way to do this but for now it works
-        noteOn(note);
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        noteOff(note);
-    }
-
     public void stop(int note) {
-        noteOff(note);
+        channel.noteOff(note, 0);
     }
 }
