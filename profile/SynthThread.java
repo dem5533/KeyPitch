@@ -1,5 +1,11 @@
 package profile;
 
+/**
+ * SynthThread.java
+ * Creates a thread that generates a sustainable sine wave to play a note
+ *
+ * @author Caleb Henry
+ */
 public class SynthThread implements Runnable {
     private final int note;
     private Thread thread;
