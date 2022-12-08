@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class MidiGraphics extends JComponent implements MouseListener, MouseMotionListener{
     private final int Y_COORDINATE = 140; //y coordinate of all keys
-    int whiteKeyStartPosition = 100; //starting position of all white keys
+    private int whiteKeyStartPosition = 100; //starting position of all white keys
     private final int WK_WIDTH = 20; //white key width
     private final int WK_HEIGHT = 135; //white key height
     private final int WK_ARCH = 7;  //white key arch width and arch height
