@@ -33,7 +33,6 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
 
     private RoundRectangle2D[] blackKey = new RoundRectangle2D.Double[20]; //BLACK keys array
     private BufferedImage buffer;
-    private Image myImage;
 
     /**
      * constructor
@@ -41,8 +40,6 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
     public MidiGraphics(){
         //instantiate rectangle midi base
         mrb = new RoundRectangle2D.Double(90, 80, 580, 210, 14,14);
-
-        myImage = new ImageIcon("/images/icons8-piano-pastel-glyph-96.png").getImage();
 
         //initialize white key rectangles
         whiteKey = new RoundRectangle2D.Double[28];
@@ -239,9 +236,6 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
         } else {
             g2.setColor(color);
             g2.fill(blackKey[keyNumber]);
-
-            g2.setColor(color);
-            g2.draw(blackKey[keyNumber]);
         }
     }
 
@@ -256,14 +250,5 @@ public class MidiGraphics extends JComponent implements MouseListener, MouseMoti
         int a = 100;
         return new Color(r,g,b,a).brighter().brighter();
     }
-    
-    private ImageIcon createIcon(String path){
-        URL url = getClass().getResource(path);
-
-        if(url == null){
-            System.err.println("Unable to load the image: " + path);
-        }
-        ImageIcon icon = new ImageIcon(url);
-        return icon;
-    }
+  
 }
