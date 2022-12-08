@@ -69,7 +69,7 @@ public class MainFrame  extends JFrame {
         width = screenSize.width * 2 / 3;
 //        setPreferredSize(new Dimension(width, height));
 
-//        setSize(new Dimension(810, 600));//sets the size of the application frame/
+        setSize(new Dimension(810, 600));//sets the size of the application frame/
 //        setMinimumSize(new Dimension(900,600));
         
         setResizable(false);
