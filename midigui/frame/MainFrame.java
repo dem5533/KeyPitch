@@ -63,13 +63,16 @@ public class MainFrame  extends JFrame {
         setJMenuBar(createMenuBar());
         setIconImage(createIcon("..//images//icons8-piano-pastel-glyph-96.png").getImage());
 
+        
+// set the frame height and width
         height = screenSize.height * 2 / 3;
         width = screenSize.width * 2 / 3;
-// set the frame height and width
-        setPreferredSize(new Dimension(width, height));
+//        setPreferredSize(new Dimension(width, height));
 
-        //setSize(new Dimension(810, 600));//sets the size of the application frame
-        setMinimumSize(new Dimension(900,600));
+//        setSize(new Dimension(810, 600));//sets the size of the application frame/
+//        setMinimumSize(new Dimension(900,600));
+        
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //close application
         setVisible(true); //set visibility
     }
